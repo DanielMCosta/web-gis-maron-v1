@@ -1,0 +1,200 @@
+/* Garantir que o mapa ocupe toda a tela */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Evita barras de rolagem *//
+
+}
+
+
+/* Estilo do título */
+#page-title {
+  position: absolute !important; /* Posiciona o título de forma absoluta */
+  top: 10px; /* Distância do topo */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta o centro */
+  z-index: 1001; /* Garante que o título fique acima do mapa */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  color: #00a8a5;
+  
+  background-color: rgba(255, 255, 255, 0.880); /* Fundo semi-transparente */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do painel de conteúdos (menu lateral) */
+#menu {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 20%;
+  height: 90vh;
+  overflow-y: auto;
+}
+
+#menu h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+/* Estilo dos filtros */
+.filterlabel {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.filterselect select {
+  width: 100%;
+  padding: 8px;
+  height: 240px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.filterselect select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.filterlabel[onclick] {
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.filterlabel[onclick]:hover {
+  color: #0056b3;
+}
+
+/* Estilo do mapa */
+#map {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  height: 90vh;
+  
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Ocupa toda a tela */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Mapa fica atrás da div de filtro */
+}
+
+
+/* Layout geral */
+#all {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#mapWindow {
+  flex: 1;
+  margin-right: 10px;
+}
+
+#menu {
+  width: 300px;
+  height: 400px;
+}
+
+#logo {
+  position: absolute; /* Posiciona o logo de forma absoluta */
+  top: 20px; /* Distância do topo */
+  left: 20px; /* Distância da esquerda */
+  z-index: 1001; /* Garante que o logo fique acima do mapa */
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  background-color: rgba(255, 255, 255, 0.880); /* Fundo branco para garantir visibilidade */
+  padding: 5px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Ajuste das ferramentas de zoom, medição e localização */
+.leaflet-top.leaflet-left {
+  top: 300px; /* Move os controles para baixo */
+}
+
+/* Ajuste adicional para o controle de localização */
+.leaflet-control-locate {
+  top: 120px; /* Move o controle de localização para baixo */
+}
+
+/* estilo do menu */
+#menu h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #00a8a5; /* Linha abaixo do título com a cor #00a8a5 */
+  padding-bottom: 5px;
+}
+
+
+.clear-filter-btn {
+  background-color: #00a8a5; /* Cor de fundo */
+  color: white !important; /* Cor do texto */
+  padding: 5px 10px; /* Espaçamento interno */
+  border-radius: 3px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  border: none; /* Remove a borda */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra */
+  transition: background-color 0.3s ease; /* Transição suave */
+  display: inline-block; /* Garante que o botão se comporte como um bloco */
+  margin-top: 5px; /* Espaçamento superior */
+}
+
+.clear-filter-btn:hover {
+  background-color: #008c8a; /* Cor de fundo ao passar o mouse */
+}
+
+
+.sigla-uf-label {
+  display: none; /* Oculta apenas o texto SIGLA_UF */
+}
+
+/* Estilo da div de filtro */
+#div_SIGLA_UF {
+  position: absolute; /* Sobreposta ao mapa */
+  bottom: 10px; /* Distância do topo */
+  right: 10px; /* Distância da direita */
+  z-index: 2; /* Fica acima do mapa */
+  background: rgba(255, 255, 255, 0.9); /* Fundo semitransparente */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  width: 200px; /* Largura da div de filtro */
+}
+
+#sel_SIGLA_UF {
+  height: auto;
+  max-height: 150px; /* Altura máxima da caixa de seleção */
+  overflow-y: auto;
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
